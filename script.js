@@ -1,11 +1,13 @@
 const SERVICOS = [
-  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.' },
-  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.' },
-  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.' },
-  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.' }
+  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.', icone: '🩺' },
+  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.', icone: '💉' },
+  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.', icone: '🛁' },
+  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.', icone: '🏥' }
 ];
 
 const ESPECIES = { cao: 'Cão', gato: 'Gato', coelho: 'Coelho', ave: 'Ave', outro: 'Outro' };
+
+const ICONES = { cao: '🐶', gato: '🐱', coelho: '🐰', ave: '🐦', outro: '🐾' };
 
 const CHAVE = 'patinhas_marcacoes';
 
@@ -146,6 +148,7 @@ function prepararFormulario() {
 
   document.getElementById('listaServicos').innerHTML = SERVICOS.map(s => `
     <article class="servico">
+      <div class="s-ico">${s.icone}</div>
       <h3>${s.nome}</h3>
       <p class="preco">${formatarPreco(s.preco)}</p>
       <p>${s.descricao}</p>
@@ -191,10 +194,11 @@ function mostrarLista() {
 
   lista.innerHTML = visiveis.map(m => `
     <li class="item">
-      <div class="quando"><b>${formatarData(m.data)}</b><span>${diaDaSemana(m.data)} · ${m.hora}</span></div>
+      <div class="avatar ${m.especie}">${ICONES[m.especie]}</div>
       <div class="info">
         <b>${escapar(m.animal)} <span class="pilula">${ESPECIES[m.especie]}</span></b>
         <span>${escapar(m.tutor)} · ${nomeDoServico(m.servico)} · ${formatarPreco(m.preco)}</span>
+        <div class="quando"><b>${formatarData(m.data)}</b><span>${diaDaSemana(m.data)} · ${m.hora}</span></div>
       </div>
       <button class="cancelar" data-id="${m.id}">Cancelar</button>
     </li>`).join('');

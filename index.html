@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Clínica Veterinária Patinhas: marcação de consultas online.">
   <title>Clínica Veterinária Patinhas</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f7d6d'/%3E%3Cellipse cx='32' cy='40' rx='11' ry='9' fill='%23fff'/%3E%3Ccircle cx='19' cy='27' r='5' fill='%23fff'/%3E%3Ccircle cx='27' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='37' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='45' cy='27' r='5' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff8fab'/%3E%3Cellipse cx='32' cy='40' rx='11' ry='9' fill='%23fff'/%3E%3Ccircle cx='19' cy='27' r='5' fill='%23fff'/%3E%3Ccircle cx='27' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='37' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='45' cy='27' r='5' fill='%23fff'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,27 +31,72 @@
   <main>
     <section class="destaque" id="inicio">
       <div class="contentor destaque-linha">
-        <div>
-          <p class="etiqueta">Seg. a sáb. · 09:00 – 18:00</p>
-          <h1>Cuidamos de quem<br>mais gosta de si.</h1>
-          <p class="destaque-texto">Marque a consulta do seu animal em menos de um minuto. Escolha o serviço, o dia e a hora, e nós tratamos do resto.</p>
-          <a class="btn principal" href="#marcar">Marcar consulta</a>
+        <div class="destaque-texto">
+          <p class="etiqueta">🐾 Seg. a sáb. · 09:00 – 18:00</p>
+          <h1>Cuidamos de quem <span>mais gosta de si</span></h1>
+          <p>Marque a consulta do seu patudo em menos de um minuto. Escolha o serviço, o dia e a hora, e nós tratamos do resto com muito mimo.</p>
+          <div class="destaque-acoes">
+            <a class="btn principal" href="#marcar">Marcar consulta</a>
+            <a class="btn claro" href="#servicos">Ver serviços</a>
+          </div>
         </div>
+
+        <div class="ilustracao" aria-hidden="true">
+          <svg viewBox="0 0 360 300">
+            <circle cx="180" cy="160" r="128" fill="#fff4cc"/>
+            <path d="M70 120 l8 -8 l8 8 l-8 8z M300 90 l6 -6 l6 6 l-6 6z M286 220 l5 -5 l5 5 l-5 5z" fill="#ffc94d"/>
+            <g class="cruz"><rect x="262" y="34" width="56" height="56" rx="16" fill="#ff8fab"/><path d="M284 46h12v12h12v12h-12v12h-12V70h-12V58h12z" fill="#fff"/></g>
+            <g>
+              <ellipse cx="130" cy="262" rx="62" ry="12" fill="#2b2d42" opacity="0.08"/>
+              <path d="M84 270c0-52 18-86 46-86s46 34 46 86z" fill="#f2c18d"/>
+              <path d="M110 270c0-30 9-48 20-48s20 18 20 48z" fill="#fff3e2"/>
+              <ellipse cx="130" cy="150" rx="56" ry="50" fill="#f2c18d"/>
+              <path d="M78 118c-18 4-26 34-16 60 6 14 22 10 24-6 3-20 4-40-8-54z" fill="#b97a4b"/>
+              <path d="M182 118c18 4 26 34 16 60-6 14-22 10-24-6-3-20-4-40 8-54z" fill="#b97a4b"/>
+              <ellipse cx="130" cy="170" rx="30" ry="22" fill="#fff3e2"/>
+              <circle cx="110" cy="146" r="8" fill="#2b2d42"/><circle cx="150" cy="146" r="8" fill="#2b2d42"/>
+              <circle cx="113" cy="143" r="2.6" fill="#fff"/><circle cx="153" cy="143" r="2.6" fill="#fff"/>
+              <ellipse cx="130" cy="162" rx="9" ry="6.5" fill="#2b2d42"/>
+              <path d="M120 174q10 9 20 0" stroke="#2b2d42" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <ellipse cx="96" cy="166" rx="9" ry="5" fill="#ff8fab" opacity="0.6"/><ellipse cx="164" cy="166" rx="9" ry="5" fill="#ff8fab" opacity="0.6"/>
+              <path d="M98 196q32 18 64 0" stroke="#5bc0be" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <circle cx="130" cy="207" r="7" fill="#ffc94d"/>
+            </g>
+            <g>
+              <ellipse cx="248" cy="264" rx="50" ry="10" fill="#2b2d42" opacity="0.08"/>
+              <path d="M290 250c26-4 34-34 20-50" stroke="#a9a3c9" stroke-width="13" fill="none" stroke-linecap="round"/>
+              <path d="M210 270c0-44 16-72 38-72s38 28 38 72z" fill="#c9c4e6"/>
+              <path d="M232 270c0-24 7-38 16-38s16 14 16 38z" fill="#f4f2fb"/>
+              <path d="M206 160l6-48 28 26z" fill="#c9c4e6"/><path d="M290 160l-6-48-28 26z" fill="#c9c4e6"/>
+              <path d="M214 148l4-26 14 14z" fill="#ffb3c6"/><path d="M282 148l-4-26-14 14z" fill="#ffb3c6"/>
+              <ellipse cx="248" cy="170" rx="46" ry="40" fill="#c9c4e6"/>
+              <path d="M228 168q6 -7 12 0" stroke="#2b2d42" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <path d="M256 168q6 -7 12 0" stroke="#2b2d42" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <path d="M244 180h8l-4 5z" fill="#ff8fab"/>
+              <path d="M240 188q8 6 16 0" stroke="#2b2d42" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <ellipse cx="222" cy="184" rx="8" ry="4.5" fill="#ff8fab" opacity="0.6"/><ellipse cx="274" cy="184" rx="8" ry="4.5" fill="#ff8fab" opacity="0.6"/>
+              <path d="M206 182h-16M206 188l-14 4M290 182h16M290 188l14 4" stroke="#2b2d42" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="contentor">
         <ul class="numeros">
-          <li><b id="numTotal">0</b><span>marcações</span></li>
-          <li><b id="numValor">0,00 €</b><span>valor previsto</span></li>
+          <li class="n-rosa"><span class="n-ico">📅</span><div><b id="numTotal">0</b><span>marcações</span></div></li>
+          <li class="n-amarelo"><span class="n-ico">💰</span><div><b id="numValor">0,00 €</b><span>valor previsto</span></div></li>
+          <li class="n-verde"><span class="n-ico">🩺</span><div><b>4</b><span>veterinários</span></div></li>
         </ul>
       </div>
     </section>
 
     <div class="contentor grelha">
-      <section class="cartao" id="marcar">
-        <h2>Marcar consulta</h2>
+      <section class="cartao formulario" id="marcar">
+        <h2><span class="h-ico">📝</span> Marcar consulta</h2>
         <p class="sub">Os campos com * são obrigatórios.</p>
 
         <form id="formulario" novalidate>
           <fieldset>
-            <legend>Tutor</legend>
+            <legend>👤 Tutor</legend>
             <div class="campo">
               <label for="tutor">Nome do tutor *</label>
               <input id="tutor" name="tutor" type="text" autocomplete="name" placeholder="Ex.: Ana Martins">
@@ -72,7 +117,7 @@
           </fieldset>
 
           <fieldset>
-            <legend>Animal</legend>
+            <legend>🐶 Animal</legend>
             <div class="dois">
               <div class="campo">
                 <label for="animal">Nome do animal *</label>
@@ -100,7 +145,7 @@
           </fieldset>
 
           <fieldset>
-            <legend>Consulta</legend>
+            <legend>🩺 Consulta</legend>
             <div class="campo">
               <label for="servico">Serviço *</label>
               <select id="servico" name="servico">
@@ -124,7 +169,7 @@
             </div>
             <label class="caixa">
               <input id="cartao" name="cartao" type="checkbox">
-              <span>Tenho cartão de cliente Patinhas (10% de desconto)</span>
+              <span>Tenho cartão de cliente Patinhas <em>10% de desconto</em></span>
             </label>
           </fieldset>
 
@@ -139,13 +184,13 @@
         </form>
       </section>
 
-      <section class="cartao" id="marcacoes">
+      <section class="cartao marcacoes" id="marcacoes">
         <div class="cabeca-lista">
-          <h2>Marcações</h2>
+          <h2><span class="h-ico">📋</span> Marcações</h2>
           <span class="contador" id="contador">0</span>
         </div>
         <div class="filtros">
-          <input id="pesquisa" type="search" placeholder="Pesquisar animal ou tutor…" aria-label="Pesquisar">
+          <input id="pesquisa" type="search" placeholder="🔍 Pesquisar animal ou tutor…" aria-label="Pesquisar">
           <select id="filtroEspecie" aria-label="Filtrar por espécie">
             <option value="todas">Todas as espécies</option>
             <option value="cao">Cão</option>
@@ -156,27 +201,29 @@
           </select>
         </div>
         <ul class="lista" id="lista"></ul>
-        <p class="vazio" id="vazio" hidden>Não há marcações para mostrar.</p>
+        <p class="vazio" id="vazio" hidden>🐾 Não há marcações para mostrar.</p>
       </section>
     </div>
 
     <section class="contentor bloco" id="servicos">
       <h2>Serviços</h2>
+      <p class="sub">Tudo o que o seu animal precisa, num só sítio.</p>
       <div class="servicos" id="listaServicos"></div>
     </section>
 
     <section class="contentor bloco" id="contactos">
       <h2>Contactos</h2>
+      <p class="sub">Venha visitar-nos. Há sempre biscoitos para os patudos!</p>
       <div class="contactos">
-        <div class="cartao"><h3>Morada</h3><p>Rua das Flores, 120<br>4000-000 Porto</p></div>
-        <div class="cartao"><h3>Horário</h3><p>Segunda a sábado: 09:00 – 18:00<br>Domingo: fechado</p></div>
-        <div class="cartao"><h3>Telefone</h3><p>220 000 000<br>geral@patinhas.pt</p></div>
+        <div class="cartao c-rosa"><span class="c-ico">📍</span><h3>Morada</h3><p>Rua das Flores, 120<br>4000-000 Porto</p></div>
+        <div class="cartao c-amarelo"><span class="c-ico">🕘</span><h3>Horário</h3><p>Segunda a sábado: 09:00 – 18:00<br>Domingo: fechado</p></div>
+        <div class="cartao c-verde"><span class="c-ico">📞</span><h3>Telefone</h3><p>220 000 000<br>geral@patinhas.pt</p></div>
       </div>
     </section>
   </main>
 
   <footer class="rodape">
-    <div class="contentor">Clínica Veterinária Patinhas · Projeto académico (ISTEC) · Os dados ficam só no seu browser.</div>
+    <div class="contentor">🐾 Clínica Veterinária Patinhas · Projeto académico (ISTEC) · Os dados ficam só no seu browser.</div>
   </footer>
 
   <script src="script.js"></script>
