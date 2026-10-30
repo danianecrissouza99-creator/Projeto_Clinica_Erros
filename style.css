@@ -1,4 +1,4 @@
-:root { --fundo: #fdf8f6; --papel: #ffffff; --tinta: #3a2a31; --suave: #6e5e66; --linha: #efe2e0; --rosa: #c4557a; --rosa-escuro: #9e3f5f; --rosa-claro: #fbe9ef; --menta: #3f9e8f; --menta-escuro: #2c7a6e; --menta-claro: #e3f3ef; --areia: #f8eee9; --azul-claro: #e9eff6; --erro: #c4423a; --raio: 18px; --sombra: 0 1px 2px rgba(58, 42, 49, 0.05), 0 6px 20px rgba(58, 42, 49, 0.06); }
+:root { --fundo: #fdf8f6; --papel: #ffffff; --tinta: #3a2a31; --suave: #6e5e66; --linha: #efe2e0; --rosa: #c4557a; --rosa-escuro: #9e3f5f; --rosa-claro: #fbe9ef; --menta: #3f9e8f; --menta-escuro: #2c7a6e; --menta-claro: #e3f3ef; --areia: #f8eee9; --azul-claro: #e9eff6; --lilas-claro: #f1ecfa; --pessego-claro: #fdeee4; --erro: #c4423a; --raio: 18px; --sombra: 0 1px 2px rgba(58, 42, 49, 0.05), 0 6px 20px rgba(58, 42, 49, 0.06); }
 
 * {
  box-sizing: border-box;
@@ -787,44 +787,168 @@ select.invalido {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-@media (max-width: 900px) {
- .destaque-linha {
-        grid-template-columns: 1fr;
-  }
-.ilustracao img { max-width: 340px; }
-
- .numeros {
-        grid-template-columns: 1fr 1fr;
-  }
-	.mapa-linha {
-     grid-template-columns: 1fr;
- }
-.rodape-linha { grid-template-columns: 1fr; }
-
+body {
+ background-image: radial-gradient(600px 400px at 0% 0%, #fbe9ef 0%, transparent 70%),
+        radial-gradient(500px 400px at 100% 30%, #e3f3ef 0%, transparent 70%),
+    radial-gradient(500px 400px at 0% 90%, #f1ecfa 0%, transparent 70%);
+	background-attachment: fixed;
 }
-@media (max-width: 760px) {
- .grelha {
-        grid-template-columns: 460px 460px;
-  }
-.dois { grid-template-columns: 1fr; }
+.destaque .ilustracao { position: relative; }
 
- .cartao {
-        padding: 20px;
+.destaque .ilustracao::before {
+	content: '';
+   position: absolute;
+ inset: 6% 0 -4% 8%;
+    border-radius: 40% 60% 55% 45%;
+  background: var(--rosa-claro);
+	transform: rotate(-6deg);
+   z-index: -1;
+}
+.etiqueta {
+  background: var(--rosa-claro);
+	padding: 6px 14px;
+   border-radius: 999px;
+}
+.pagina-topo { background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'%3E%3Cg fill='%23c4557a' opacity='0.12'%3E%3Cellipse cx='60' cy='70' rx='16' ry='13'/%3E%3Ccircle cx='42' cy='52' r='6'/%3E%3Ccircle cx='54' cy='42' r='6'/%3E%3Ccircle cx='68' cy='42' r='6'/%3E%3Ccircle cx='79' cy='52' r='6'/%3E%3C/g%3E%3Cg fill='%233f9e8f' opacity='0.14' transform='rotate(20 160 50)'%3E%3Cellipse cx='160' cy='56' rx='12' ry='10'/%3E%3Ccircle cx='147' cy='42' r='4.5'/%3E%3Ccircle cx='156' cy='35' r='4.5'/%3E%3Ccircle cx='166' cy='35' r='4.5'/%3E%3Ccircle cx='174' cy='42' r='4.5'/%3E%3C/g%3E%3C/svg%3E") no-repeat right 8% center, linear-gradient(120deg, var(--rosa-claro), var(--pessego-claro) 55%, var(--menta-claro)); border-bottom: 0; }
+
+.vantagem.v-rosa {
+   background: var(--rosa-claro);
+ border-color: transparent;
+}
+.vantagem.v-verde {
+	background: var(--menta-claro);
+   border-color: transparent;
+}
+.vantagem.v-amarelo { background: var(--pessego-claro); border-color: transparent; }
+.vantagem span {
+   background: #fff;
+}
+.passos b {
+  display: grid;
+	place-items: center;
+   width: 52px;
+ height: 52px;
+    border-radius: 50%;
+  background: var(--rosa-claro);
+	font-size: 26px;
+}
+.passos li:nth-child(2) b { background: var(--menta-claro); color: var(--menta-escuro); }
+
+.passos li:nth-child(3) b {
+	background: var(--lilas-claro);
+   color: #6d55a3;
+}
+.servico:nth-child(1) {
+  background: var(--rosa-claro);
+}
+.servico:nth-child(2) { background: var(--menta-claro); }
+
+.servico:nth-child(3) {
+  background: var(--lilas-claro);
+}
+.servico:nth-child(4) {
+ background: var(--pessego-claro);
+}
+.servico, .membro, .dica { border-color: transparent; box-shadow: var(--sombra); }
+
+.membro:nth-child(odd) {
+ background: linear-gradient(180deg, var(--rosa-claro) 0 90px, var(--papel) 90px);
+}
+.membro:nth-child(even) {
+	background: linear-gradient(180deg, var(--menta-claro) 0 90px, var(--papel) 90px);
+}
+.membro-foto { border: 5px solid #fff; box-shadow: var(--sombra); }
+.membro-area {
+	background: #fff;
+   padding: 3px 12px;
+ border-radius: 999px;
+    box-shadow: var(--sombra);
+}
+.dica.v-amarelo {
+   background: var(--pessego-claro);
+}
+.dica.v-lilas { background: var(--lilas-claro); }
+
+.dica.v-rosa {
+   background: var(--rosa-claro);
+}
+.dica.v-azul {
+  background: var(--azul-claro);
+}
+.faq details[open] { box-shadow: inset 4px 0 0 var(--rosa); background: #fffafb; }
+
+.numeros li:nth-child(1) {
+  background: var(--rosa-claro);
+	border-color: transparent;
+}
+.numeros li:nth-child(2) {
+    background: var(--menta-claro);
+  border-color: transparent;
+}
+.numeros li:nth-child(3) { background: var(--lilas-claro); border-color: transparent; }
+
+.numeros .n-ico {
+  background: #fff;
+}
+.item:hover {
+ background: var(--rosa-claro);
+    border-color: transparent;
+}
+.contactos .cartao:nth-child(1) { background: var(--rosa-claro); }
+
+.contactos .cartao:nth-child(2) {
+    background: var(--pessego-claro);
+}
+.contactos .cartao:nth-child(3) {
+   background: var(--menta-claro);
+}
+.contactos .cartao { border-color: transparent; }
+
+.contactos .c-ico {
+   background: #fff;
+}
+.rodape {
+  border-top: 6px solid transparent;
+	border-image: linear-gradient(90deg, #f3b6c8, #f6d2bb, #bfe3da, #d6c9f0) 1;
+}
+@media (max-width: 900px) {
+  .destaque-linha {
+		grid-template-columns: 1fr;
+   }
+ .ilustracao img {
+        max-width: 340px;
   }
 	.numeros {
+     grid-template-columns: 1fr 1fr;
+ }
+.mapa-linha { grid-template-columns: 1fr; }
+	.rodape-linha {
      grid-template-columns: 1fr;
  }
-.item { grid-template-columns: auto 1fr; }
-
-	.item .cancelar {
-     grid-column: 1 / -1;
+}
+@media (max-width: 760px) {
+	.grelha {
+     grid-template-columns: 460px 460px;
  }
-    .pagina-topo .contentor {
+    .dois {
     grid-template-columns: 1fr;
-		text-align: left;
-   }
-.pagina-ico { grid-row: auto; margin-bottom: 14px; }
+	}
+   .cartao {
+  padding: 20px;
+    }
+.numeros { grid-template-columns: 1fr; }
 
+   .item {
+  grid-template-columns: auto 1fr;
+    }
+  .item .cancelar {
+		grid-column: 1 / -1;
+   }
+.pagina-topo .contentor { grid-template-columns: 1fr; text-align: left; }
+  .pagina-ico {
+		grid-row: auto;
+     margin-bottom: 14px;
+ }
 }
 .btn{font-weight:700}
 .cartao {background:#fff}
