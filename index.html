@@ -15,29 +15,31 @@
 
   <header class="topo">
     <div class="contentor topo-linha">
-      <a class="logo" href="#inicio">
+      <a class="logo" href="index.html">
         <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><ellipse cx="32" cy="40" rx="11" ry="9"/><circle cx="19" cy="27" r="5"/><circle cx="27" cy="19" r="5"/><circle cx="37" cy="19" r="5"/><circle cx="45" cy="27" r="5"/></svg>
         <span>Patinhas<small>Clínica Veterinária</small></span>
       </a>
       <nav class="menu" aria-label="Menu principal">
-        <a href="#marcar">Marcar consulta</a>
-        <a href="#marcacoes">Marcações</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#servicos">Contactos</a>
+        <a href="index.html" class="ativo">Início</a>
+        <a href="marcar.html">Marcar consulta</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="equipa.html">Equipa</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="servicos.html">Contactos</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="destaque" id="inicio">
+    <section class="destaque">
       <div class="contentor destaque-linha">
         <div class="destaque-texto">
           <p class="etiqueta">🐾 Seg. a sáb. · 09:00 – 18:00</p>
           <h1>Cuidamos de quem <span>mais gosta de si</span></h1>
-          <p>Marque a consulta do seu patudo em menos de um minuto. Escolha o serviço, o dia e a hora, e nós tratamos do resto com muito mimo.</p>
+          <p>Somos uma clínica pequena, com tempo para cada patudo. Marque a consulta online em menos de um minuto e nós tratamos do resto com muito mimo.</p>
           <div class="destaque-acoes">
-            <a class="btn principal" href="#marcar">Marcar consulta</a>
-            <a class="btn claro" href="#servicos">Ver serviços</a>
+            <a class="btn principal" href="marcar.html">Marcar consulta</a>
+            <a class="btn claro" href="servicos.html">Ver serviços</a>
           </div>
         </div>
 
@@ -80,150 +82,54 @@
           </svg>
         </div>
       </div>
-      <div class="contentor">
-        <ul class="numeros">
-          <li class="n-rosa"><span class="n-ico">📅</span><div><b id="numTotal">0</b><span>marcações</span></div></li>
-          <li class="n-amarelo"><span class="n-ico">💰</span><div><b id="numValor">0,00 €</b><span>valor previsto</span></div></li>
-          <li class="n-verde"><span class="n-ico">🩺</span><div><b>4</b><span>veterinários</span></div></li>
-        </ul>
+    </section>
+
+    <section class="contentor bloco">
+      <h2>Porquê a Patinhas?</h2>
+      <p class="sub">Três coisas de que os nossos clientes mais gostam.</p>
+      <div class="vantagens">
+        <article class="vantagem v-rosa"><span>💗</span><h3>Atendimento com mimo</h3><p>Cada consulta tem tempo para o animal se sentir à vontade, com biscoitos e muita paciência.</p></article>
+        <article class="vantagem v-verde"><span>🩺</span><h3>Equipa experiente</h3><p>Quatro veterinários com especialidades diferentes, de cães e gatos a coelhos e aves.</p></article>
+        <article class="vantagem v-amarelo"><span>📱</span><h3>Marcação online</h3><p>Escolha o dia e a hora no site, sem telefonemas. Pode ver e cancelar as marcações quando quiser.</p></article>
       </div>
     </section>
 
-    <div class="contentor grelha">
-      <section class="cartao formulario" id="marcar">
-        <h2><span class="h-ico">📝</span> Marcar consulta</h2>
-        <p class="sub">Os campos com * são obrigatórios.</p>
-
-        <form id="formulario" novalidate>
-          <fieldset>
-            <legend>👤 Tutor</legend>
-            <div class="campo">
-              <label for="tutor">Nome do tutor *</label>
-              <input id="tutor" name="tutor" type="text" autocomplete="name" placeholder="Ex.: Ana Martins">
-              <p class="erro" data-erro="tutor"></p>
-            </div>
-            <div class="dois">
-              <div class="campo">
-                <label for="email">Email *</label>
-                <input id="email" name="email" type="email" autocomplete="email" placeholder="ana@email.pt">
-                <p class="erro" data-erro="email"></p>
-              </div>
-              <div class="campo">
-                <label for="email">Telefone *</label>
-                <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="912345678">
-                <p class="erro" data-erro="telefone"></p>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>🐶 Animal</legend>
-            <div class="dois">
-              <div class="campo">
-                <label for="animal">Nome do animal *</label>
-                <input id="animal" name="animal" type="text" placeholder="Ex.: Bobi">
-                <p class="erro" data-erro="animal"></p>
-              </div>
-              <div class="campo">
-                <label for="especie">Espécie *</label>
-                <select id="especie" name="especie">
-                  <option value="">Escolher…</option>
-                  <option value="cao">Cão</option>
-                  <option value="gato">Gato</option>
-                  <option value="coelho">Coelho</option>
-                  <option value="ave">Ave</option>
-                  <option value="outro">Outro</option>
-                </select>
-                <p class="erro" data-erro="especie"></p>
-              </div>
-            </div>
-            <div class="campo curto">
-              <label for="idade">Idade (anos) *</label>
-              <input id="idade" name="idade" type="number" placeholder="Ex.: 4">
-              <p class="erro" data-erro="idade"></p>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>🩺 Consulta</legend>
-            <div class="campo">
-              <label for="servico">Serviço *</label>
-              <select id="servico" name="servico">
-                <option value="">Escolher…</option>
-              </select>
-              <p class="erro" data-erro="servico"></p>
-            </div>
-            <div class="dois">
-              <div class="campo">
-                <label for="data">Data *</label>
-                <input id="data" name="data" type="date">
-                <p class="erro" data-erro="data"></p>
-              </div>
-              <div class="campo">
-                <label for="hora">Hora *</label>
-                <select id="hora" name="hora">
-                  <option value="">Escolher…</option>
-                </select>
-                <p class="erro" data-erro="hora"></p>
-              </div>
-            </div>
-            <label class="caixa">
-              <input id="cartao" name="cartao" type="checkbox">
-              <span>Tenho cartão de cliente Patinhas <em>10% de desconto</em></span>
-            </label>
-          </fieldset>
-
-          <div class="resumo" id="resumo">Escolha um serviço para ver o preço.</div>
-
-          <div class="mensagem" id="mensagem" role="status" hidden></div>
-
-          <div class="botoes">
-            <button type="submit" class="btn principal">Marcar cosulta</button>
-            <button type="button" class="btn secundario">Limpar</button>
-          </div>
-        </form>
-      </section>
-
-      <section class="cartao marcacoes" id="marcacoes">
-        <div class="cabeca-lista">
-          <h2><span class="h-ico">📋</span> Marcações</h2>
-          <span class="contador" id="contador">0</span>
-        </div>
-        <div class="filtros">
-          <input id="pesquisa" type="search" placeholder="🔍 Pesquisar animal ou tutor…" aria-label="Pesquisar">
-          <select id="filtroEspecie" aria-label="Filtrar por espécie">
-            <option value="todas">Todas as espécies</option>
-            <option value="cao">Cão</option>
-            <option value="gato">Gato</option>
-            <option value="coelho">Coelho</option>
-            <option value="ave">Ave</option>
-            <option value="outro">Outro</option>
-          </select>
-        </div>
-        <ul class="lista" id="lista"></ul>
-        <p class="vazio" id="vazio" hidden>🐾 Não há marcações para mostrar.</p>
-      </section>
-    </div>
-
-    <section class="contentor bloco" id="servicos">
-      <h2>Serviços</h2>
-      <p class="sub">Tudo o que o seu animal precisa, num só sítio.</p>
-      <div class="servicos" id="listaServicos"></div>
+    <section class="contentor bloco">
+      <h2>Como marcar</h2>
+      <p class="sub">Em três passos simples.</p>
+      <ol class="passos">
+        <li><b>1</b><h3>Preencha os dados</h3><p>O seu nome, o contacto e os dados do animal.</p></li>
+        <li><b>2</b><h3>Escolha o serviço</h3><p>Consulta, vacinação, banho ou avaliação cirúrgica.</p></li>
+        <li><b>3</b><h3>Escolha o dia e a hora</h3><p>De segunda a sábado, das 09:00 às 18:00.</p></li>
+      </ol>
     </section>
 
-    <section class="contentor bloco" id="contactos">
-      <h2>Contactos</h2>
-      <p class="sub">Venha visitar-nos. Há sempre biscoitos para os patudos!</p>
-      <div class="contactos">
-        <div class="cartao c-rosa"><span class="c-ico">📍</span><h3>Morada</h3><p>Rua das Flores, 120<br>4000-000 Porto</p></div>
-        <div class="cartao c-amarelo"><span class="c-ico">🕘</span><h3>Horário</h3><p>Segunda a sábado: 09:00 – 18:00<br>Domingo: fechado</p></div>
-        <div class="cartao c-verde"><span class="c-ico">📞</span><h3>Telefone</h3><p>220 000 000<br>geral@patinhas.pt</p></div>
+    <section class="contentor bloco">
+      <div class="chamada">
+        <div>
+          <h2>O seu patudo merece um miminho 🐶🐱</h2>
+          <p>Marque já a próxima consulta. Com o cartão Patinhas tem 10% de desconto em todos os serviços.</p>
+        </div>
+        <a class="btn principal" href="marcar.html">Marcar consulta</a>
       </div>
     </section>
   </main>
 
   <footer class="rodape">
-    <div class="contentor">🐾 Clínica Veterinária Patinhas · Projeto académico (ISTEC) · Os dados ficam só no seu browser.</div>
+    <div class="contentor rodape-linha">
+      <div>
+        <b>🐾 Clínica Veterinária Patinhas</b>
+        <p>Rua das Flores, 120 · 4000-000 Porto<br>220 000 000 · geral@patinhas.pt</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <a href="marcar.html">Marcar consulta</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="equipa.html">Equipa</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+      <p class="rodape-nota">Projeto académico (ISTEC) · Os dados ficam só no seu browser.</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Clínica Veterinária Patinhas: marcação de consultas online.">
+  <title>Marcar consulta · Clínica Veterinária Patinhas</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23ff8fab'/%3E%3Cellipse cx='32' cy='40' rx='11' ry='9' fill='%23fff'/%3E%3Ccircle cx='19' cy='27' r='5' fill='%23fff'/%3E%3Ccircle cx='27' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='37' cy='19' r='5' fill='%23fff'/%3E%3Ccircle cx='45' cy='27' r='5' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="contentor topo-linha">
+      <a class="logo" href="index.html">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><ellipse cx="32" cy="40" rx="11" ry="9"/><circle cx="19" cy="27" r="5"/><circle cx="27" cy="19" r="5"/><circle cx="37" cy="19" r="5"/><circle cx="45" cy="27" r="5"/></svg>
+        <span>Patinhas<small>Clínica Veterinária</small></span>
+      </a>
+      <nav class="menu" aria-label="Menu principal">
+        <a href="index.html">Início</a>
+        <a href="marcar.html" class="ativo">Marcar consulta</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="equipa.html">Equipa</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="pagina-topo t-rosa">
+      <div class="contentor">
+        <span class="pagina-ico">📝</span>
+        <h1>Marcar consulta</h1>
+        <p>Preencha o formulário e veja todas as marcações ao lado.</p>
+      </div>
+    </section>
+
+    <div class="contentor">
+        <ul class="numeros">
+          <li class="n-rosa"><span class="n-ico">📅</span><div><b id="numTotal">0</b><span>marcações</span></div></li>
+          <li class="n-amarelo"><span class="n-ico">💰</span><div><b id="numValor">0,00 €</b><span>valor previsto</span></div></li>
+          <li class="n-verde"><span class="n-ico">🩺</span><div><b>4</b><span>veterinários</span></div></li>
+        </ul>
+    </div>
+
+    <div class="contentor grelha">
+      <section class="cartao formulario" id="marcar">
+        <h2><span class="h-ico">📝</span> Marcar consulta</h2>
+        <p class="sub">Os campos com * são obrigatórios.</p>
+
+        <form id="formulario" novalidate>
+          <fieldset>
+            <legend>👤 Tutor</legend>
+            <div class="campo">
+              <label for="tutor">Nome do tutor *</label>
+              <input id="tutor" name="tutor" type="text" autocomplete="name" placeholder="Ex.: Ana Martins">
+              <p class="erro" data-erro="tutor"></p>
+            </div>
+            <div class="dois">
+              <div class="campo">
+                <label for="email">Email *</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="ana@email.pt">
+                <p class="erro" data-erro="email"></p>
+              </div>
+              <div class="campo">
+                <label for="email">Telefone *</label>
+                <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="912345678">
+                <p class="erro" data-erro="telefone"></p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>🐶 Animal</legend>
+            <div class="dois">
+              <div class="campo">
+                <label for="animal">Nome do animal *</label>
+                <input id="animal" name="animal" type="text" placeholder="Ex.: Bobi">
+                <p class="erro" data-erro="animal"></p>
+              </div>
+              <div class="campo">
+                <label for="especie">Espécie *</label>
+                <select id="especie" name="especie">
+                  <option value="">Escolher…</option>
+                  <option value="cao">Cão</option>
+                  <option value="gato">Gato</option>
+                  <option value="coelho">Coelho</option>
+                  <option value="ave">Ave</option>
+                  <option value="outro">Outro</option>
+                </select>
+                <p class="erro" data-erro="especie"></p>
+              </div>
+            </div>
+            <div class="campo curto">
+              <label for="idade">Idade (anos) *</label>
+              <input id="idade" name="idade" type="number" placeholder="Ex.: 4">
+              <p class="erro" data-erro="idade"></p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>🩺 Consulta</legend>
+            <div class="campo">
+              <label for="servico">Serviço *</label>
+              <select id="servico" name="servico">
+                <option value="">Escolher…</option>
+              </select>
+              <p class="erro" data-erro="servico"></p>
+            </div>
+            <div class="dois">
+              <div class="campo">
+                <label for="data">Data *</label>
+                <input id="data" name="data" type="date">
+                <p class="erro" data-erro="data"></p>
+              </div>
+              <div class="campo">
+                <label for="hora">Hora *</label>
+                <select id="hora" name="hora">
+                  <option value="">Escolher…</option>
+                </select>
+                <p class="erro" data-erro="hora"></p>
+              </div>
+            </div>
+            <label class="caixa">
+              <input id="cartao" name="cartao" type="checkbox">
+              <span>Tenho cartão de cliente Patinhas <em>10% de desconto</em></span>
+            </label>
+          </fieldset>
+
+          <div class="resumo" id="resumo">Escolha um serviço para ver o preço.</div>
+
+          <div class="mensagem" id="mensagem" role="status" hidden></div>
+
+          <div class="botoes">
+            <button type="submit" class="btn principal">Marcar cosulta</button>
+            <button type="button" class="btn secundario">Limpar</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="cartao marcacoes" id="marcacoes">
+        <div class="cabeca-lista">
+          <h2><span class="h-ico">📋</span> Marcações</h2>
+          <span class="contador" id="contador">0</span>
+        </div>
+        <div class="filtros">
+          <input id="pesquisa" type="search" placeholder="🔍 Pesquisar animal ou tutor…" aria-label="Pesquisar">
+          <select id="filtroEspecie" aria-label="Filtrar por espécie">
+            <option value="todas">Todas as espécies</option>
+            <option value="cao">Cão</option>
+            <option value="gato">Gato</option>
+            <option value="coelho">Coelho</option>
+            <option value="ave">Ave</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <ul class="lista" id="lista"></ul>
+        <p class="vazio" id="vazio" hidden>🐾 Não há marcações para mostrar.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="contentor rodape-linha">
+      <div>
+        <b>🐾 Clínica Veterinária Patinhas</b>
+        <p>Rua das Flores, 120 · 4000-000 Porto<br>220 000 000 · geral@patinhas.pt</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <a href="marcar.html">Marcar consulta</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="equipa.html">Equipa</a>
+        <a href="dicas.html">Dicas</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+      <p class="rodape-nota">Projeto académico (ISTEC) · Os dados ficam só no seu browser.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

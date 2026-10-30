@@ -1,8 +1,8 @@
 const SERVICOS = [
-  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.', icone: '🩺' },
-  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.', icone: '💉' },
-  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.', icone: '🛁' },
-  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.', icone: '🏥' }
+  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.', icone: '🩺', duracao: '30 min' },
+  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.', icone: '💉', duracao: '15 min' },
+  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.', icone: '🛁', duracao: '1 h 30 min' },
+  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.', icone: '🏥', duracao: '45 min' }
 ];
 
 const ESPECIES = { cao: 'Cão', gato: 'Gato', coelho: 'Coelho', ave: 'Ave', outro: 'Outro' };
@@ -145,13 +145,16 @@ function prepararFormulario() {
 
   const selHora = document.getElementById('hora');
   horasDisponiveis().forEach(h => selHora.add(new Option(h, h)));
+}
 
+function mostrarServicos() {
   document.getElementById('listaServicos').innerHTML = SERVICOS.map(s => `
     <article class="servico">
       <div class="s-ico">${s.icone}</div>
       <h3>${s.nome}</h3>
       <p class="preco">${formatarPreco(s.preco)}</p>
       <p>${s.descricao}</p>
+      <p class="duracao">⏱ ${s.duracao}</p>
     </article>`).join('');
 }
 
@@ -219,60 +222,69 @@ function escapar(texto) {
   return String(texto).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-formulario.addEventListener('submit', evento => {
-  evento.preventDefault();
-  const dados = {
-    tutor: formulario.tutor.value.trim(),
-    email: formulario.email.value.trim(),
-    telefone: formulario.telefone.value.trim(),
-    animal: formulario.animal.value.trim(),
-    especie: formulario.especie.value,
-    idade: formulario.idade.value === '' ? '' : Number(formulario.idade.value),
-    servico: formulario.servico.value,
-    data: formulario.data.value,
-    hora: formulario.hora.value,
-    cartao: formulario.cartao.checked
-  };
+function ligarEventos() {
+  formulario.addEventListener('submit', evento => {
+    evento.preventDefault();
+    const dados = {
+      tutor: formulario.tutor.value.trim(),
+      email: formulario.email.value.trim(),
+      telefone: formulario.telefone.value.trim(),
+      animal: formulario.animal.value.trim(),
+      especie: formulario.especie.value,
+      idade: formulario.idade.value === '' ? '' : Number(formulario.idade.value),
+      servico: formulario.servico.value,
+      data: formulario.data.value,
+      hora: formulario.hora.value,
+      cartao: formulario.cartao.checked
+    };
 
-  const erros = validar(dados);
-  mostrarErros(erros);
-  if (Object.keys(erros).length > 0) {
-    mostrarMensagem('Há campos por corrigir. Veja as mensagens a vermelho.', 'falha');
-    return;
-  }
+    const erros = validar(dados);
+    mostrarErros(erros);
+    if (Object.keys(erros).length > 0) {
+      mostrarMensagem('Há campos por corrigir. Veja as mensagens a vermelho.', 'falha');
+      return;
+    }
 
-  dados.id = Date.now();
-  dados.preco = precoFinal(dados.servico, dados.cartao);
-  marcacoes.push(dados);
-  gravar();
+    dados.id = Date.now();
+    dados.preco = precoFinal(dados.servico, dados.cartao);
+    marcacoes.push(dados);
+    gravar();
+    mostrarLista();
+    formulario.reset();
+    atualizarResumo();
+    mostrarMensagem(`Consulta marcada para ${dados.animal} a ${formatarData(dados.data)} às ${dados.hora}.`, 'falha');
+  });
+
+  formulario.addEventListener('reset', () => {
+    mostrarErros({});
+    mensagem.hidden = true;
+    setTimeout(atualizarResumo);
+  });
+
+  formulario.servico.addEventListener('change', atualizarResumo);
+  formulario.cartao.addEventListener('change', atualizarResumo);
+
+  pesquisa.addEventListener('input', mostrarLista);
+  filtroEspecie.addEventListener('change', mostrarLista);
+
+  lista.addEventListener('click', evento => {
+    const botao = evento.target.closest('.cancelar');
+    if (!botao) return;
+    const id = Number(botao.dataset.id);
+    const i = marcacoes.findIndex(m => m.id === id);
+    if (!confirm(`Cancelar a consulta de ${marcacoes[i].animal}?`)) return;
+    marcacoes.splice(i + 1, 1);
+    gravar();
+    mostrarLista();
+  });
+
+}
+
+if (formulario) {
+  prepararFormulario();
+  ligarEventos();
   mostrarLista();
-  formulario.reset();
-  atualizarResumo();
-  mostrarMensagem(`Consulta marcada para ${dados.animal} a ${formatarData(dados.data)} às ${dados.hora}.`, 'falha');
-});
-
-formulario.addEventListener('reset', () => {
-  mostrarErros({});
-  mensagem.hidden = true;
-  setTimeout(atualizarResumo);
-});
-
-formulario.servico.addEventListener('change', atualizarResumo);
-formulario.cartao.addEventListener('change', atualizarResumo);
-
-pesquisa.addEventListener('input', mostrarLista);
-filtroEspecie.addEventListener('change', mostrarLista);
-
-lista.addEventListener('click', evento => {
-  const botao = evento.target.closest('.cancelar');
-  if (!botao) return;
-  const id = Number(botao.dataset.id);
-  const i = marcacoes.findIndex(m => m.id === id);
-  if (!confirm(`Cancelar a consulta de ${marcacoes[i].animal}?`)) return;
-  marcacoes.splice(i + 1, 1);
-  gravar();
-  mostrarLista();
-});
-
-prepararFormulario();
-mostrarLista();
+}
+if (document.getElementById('listaServicos')) {
+  mostrarServicos();
+}
