@@ -1,13 +1,18 @@
 const SERVICOS = [
-  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.', icone: '🩺', duracao: '30 min' },
-  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.', icone: '💉', duracao: '15 min' },
-  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.', icone: '🛁', duracao: '1 h 30 min' },
-  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.', icone: '🏥', duracao: '45 min' }
+  { id: 'consulta', nome: 'Consulta geral', preco: 30, descricao: 'Observação completa e conselhos de saúde.', duracao: '30 min' },
+  { id: 'vacinacao', nome: 'Vacinação', preco: 25, descricao: 'Vacinas obrigatórias e de reforço.', duracao: '15 min' },
+  { id: 'banho', nome: 'Banho e tosquia', preco: 53, descricao: 'Banho, secagem e corte de pelo.', duracao: '1 h 30 min' },
+  { id: 'cirurgia', nome: 'Avaliação cirúrgica', preco: 60, descricao: 'Consulta antes de uma cirurgia.', duracao: '45 min' }
 ];
 
 const ESPECIES = { cao: 'Cão', gato: 'Gato', coelho: 'Coelho', ave: 'Ave', outro: 'Outro' };
 
-const ICONES = { cao: '🐶', gato: '🐱', coelho: '🐰', ave: '🐦', outro: '🐾' };
+const ICONES_SERVICO = {
+  consulta: '<path d="M6 3v6a4 4 0 0 0 8 0V3"/><path d="M10 13v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="11" r="2"/>',
+  vacinacao: '<path d="M17 3l4 4M19 5L9 15l-4-4L15 1M7 13l-4 4 4 4 4-4M12 8l4 4"/>',
+  banho: '<path d="M3 12h18v2a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6z"/><path d="M6 12V6a2 2 0 0 1 4 0"/>',
+  cirurgia: '<rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/>'
+};
 
 const CHAVE = 'patinhas_marcacoes';
 
@@ -150,7 +155,7 @@ function prepararFormulario() {
 function mostrarServicos() {
   document.getElementById('listaServicos').innerHTML = SERVICOS.map(s => `
     <article class="servico">
-      <div class="s-ico">${s.icone}</div>
+      <div class="s-ico"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${ICONES_SERVICO[s.id]}</svg></div>
       <h3>${s.nome}</h3>
       <p class="preco">${formatarPreco(s.preco)}</p>
       <p>${s.descricao}</p>
@@ -197,7 +202,7 @@ function mostrarLista() {
 
   lista.innerHTML = visiveis.map(m => `
     <li class="item">
-      <div class="avatar ${m.especie}">${ICONES[m.especie]}</div>
+      <div class="avatar ${m.especie}">${escapar(m.animal.charAt(0).toUpperCase())}</div>
       <div class="info">
         <b>${escapar(m.animal)} <span class="pilula">${ESPECIES[m.especie]}</span></b>
         <span>${escapar(m.tutor)} · ${nomeDoServico(m.servico)} · ${formatarPreco(m.preco)}</span>
